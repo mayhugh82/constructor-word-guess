@@ -5,7 +5,7 @@ var Letter = require("./letter.js");
 function Word(word) {
   //an array of 'new' Letter objects representing the letters of underlying word
   this.wordArray = [];
-
+  //for loop to go through each letter 
   for (let i = 0; i < word.length; i++) {
     var char = new Letter(word[i]);
     this.wordArray.push(char);
