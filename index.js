@@ -38,7 +38,21 @@ function PromptCharGuessing() {
         return false;
       },
     },
-  ]);
+  ]).then(function (answer) {
+      let correct = false;
+      correct.wordToGuessObj.check(answer.letter.toLowerCase());
+      console.log(wordToGuessObj.wordprep());
+
+      if (correct) {
+          console.log("Correct!");
+          NumOfGuessed++;
+      }else{
+          console.log("Incorrect!");
+          NumOfGuessed--;
+          console.log("--------------" + NumOfGuessed + "guesses left------------");
+      }
+      
+  })
 }
 
 //Randomly selects a word and uses the Word constructor to store it
