@@ -26,6 +26,8 @@ function Letter(letter) {
     }
   };
 }
-
+//var a = new Letter("a")
+//console.log(a.letterCheck("a"))
+//console.log(a.toString())
 //export this file to word.js
 module.exports = Letter;
