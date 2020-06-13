@@ -18,10 +18,33 @@ let wordBank = [
   "mulan",
 ];
 
+let wordToGuess;
+let wordToGuessObj;
+let NumOfGuessed;
+
+function randomWord() {
+  wordToGuess = words[Math.floor(Math.random() * wordBank.length)];
+}
+
+function PromptCharGuessing() {
+  inquirer.prompt([
+    {
+      name: "letter",
+      message: "Guess a letter :",
+      validate: function (value) {
+        if (value.length === 1) {
+          return true;
+        }
+        return false;
+      },
+    },
+  ]);
+}
+
 //Randomly selects a word and uses the Word constructor to store it
-let randomIdx = Math.floor(Math.random() * wordBank.length);
-let randomWord = new Word(wordBank[randomIdx]);
-console.log(randomWord.displayWord());
+//let randomIdx = Math.floor(Math.random() * wordBank.length);
+//let randomWord = new Word(wordBank[randomIdx]);
+//console.log(randomWord.displayWord());
 //console.log(new Word(randomWord))
 
 //Prompts the user for each guess and keeps track of the user's remaining guesses
