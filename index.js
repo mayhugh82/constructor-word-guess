@@ -76,6 +76,22 @@ function PlayGame() {
     PromptCharGuessing();
 }
 
+function PlayAgain() {
+    inquirer.prompt([{
+        name: "confirm",
+        type: "confirm",
+        message: "Would you like to play again?",
+    },
+]).then(function (answer) {
+    if (answer.confirm === true) {
+        PlayGame();
+    } else {
+        console.log("Goodbye");
+        process.exit();
+    }
+})
+}
+
 //Randomly selects a word and uses the Word constructor to store it
 //let randomIdx = Math.floor(Math.random() * wordBank.length);
 //let randomWord = new Word(wordBank[randomIdx]);
