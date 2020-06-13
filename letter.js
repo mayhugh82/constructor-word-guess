@@ -26,3 +26,6 @@ function Letter(letter) {
     }
   };
 }
+
+//export this file to word.js
+module.exports = Letter;
