@@ -48,11 +48,18 @@ function PromptCharGuessing() {
           NumOfGuessed++;
       }else{
           console.log("Incorrect!");
-          NumOfGuessed--;
-          console.log("--------------" + NumOfGuessed + "guesses left------------");
+          NumOfGuesses--;
+          console.log("--------------" + NumOfGuesses + "guesses left------------");
       }
-      
-  })
+      if (NumOfGuessess === 0){
+          GameOver();
+      }else if (NumOfGuessed === wordToGuess.length){
+        console.log("You got it right!");
+        PlayAgain();
+      } else {
+          PromptCharGuessing();
+      }
+  });
 }
 
 //Randomly selects a word and uses the Word constructor to store it
