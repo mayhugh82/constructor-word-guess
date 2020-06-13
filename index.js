@@ -67,29 +67,53 @@ function PromptCharGuessing() {
 }
 
 function PlayGame() {
-    NumOfGuessess = 9;
-    NumOfGuessess = 0;
-    console.log("----------------------------New Game--------------------------------");
-    console.log("------------" + NumOfGuessess + " guesses remaining-----------");
-    generateword();
-    wordToGuessObj = new Word.word(wordToGuess);
-    PromptCharGuessing();
+  NumOfGuessess = 9;
+  NumOfGuessess = 0;
+  console.log(
+    "----------------------------New Game--------------------------------"
+  );
+  console.log("------------" + NumOfGuessess + " guesses remaining-----------");
+  generateword();
+  wordToGuessObj = new Word.word(wordToGuess);
+  PromptCharGuessing();
 }
 
 function PlayAgain() {
-    inquirer.prompt([{
+  inquirer
+    .prompt([
+      {
         name: "confirm",
         type: "confirm",
         message: "Would you like to play again?",
-    },
-]).then(function (answer) {
-    if (answer.confirm === true) {
+      },
+    ])
+    .then(function (answer) {
+      if (answer.confirm === true) {
         PlayGame();
-    } else {
+      } else {
         console.log("Goodbye");
         process.exit();
-    }
-})
+      }
+    });
+}
+
+function GameOver() {
+  console.log("----------------------GAME OVER------------------------------");
+
+  inquirer.prompt([
+    {
+      name: "confirm",
+      type: "confirm",
+      message: "Would you like to play again?",
+    },
+  ]).then(function (answer) {
+      if (answer === true) {
+          PlayGame();
+      } else {
+          console.log("Goodbye");
+          process.exit();
+      }
+  });
 }
 
 //Randomly selects a word and uses the Word constructor to store it
