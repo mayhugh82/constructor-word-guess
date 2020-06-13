@@ -27,39 +27,53 @@ function randomWord() {
 }
 
 function PromptCharGuessing() {
-  inquirer.prompt([
-    {
-      name: "letter",
-      message: "Guess a letter :",
-      validate: function (value) {
-        if (value.length === 1) {
-          return true;
-        }
-        return false;
+  inquirer
+    .prompt([
+      {
+        name: "letter",
+        message: "Guess a letter :",
+        validate: function (value) {
+          if (value.length === 1) {
+            return true;
+          }
+          return false;
+        },
       },
-    },
-  ]).then(function (answer) {
+    ])
+    .then(function (answer) {
       let correct = false;
       correct.wordToGuessObj.check(answer.letter.toLowerCase());
       console.log(wordToGuessObj.wordprep());
 
       if (correct) {
-          console.log("Correct!");
-          NumOfGuessed++;
-      }else{
-          console.log("Incorrect!");
-          NumOfGuesses--;
-          console.log("--------------" + NumOfGuesses + "guesses left------------");
+        console.log("Correct!");
+        NumOfGuessed++;
+      } else {
+        console.log("Incorrect!");
+        NumOfGuessess--;
+        console.log(
+          "--------------" + NumOfGuessess + "guessess left------------"
+        );
       }
-      if (NumOfGuessess === 0){
-          GameOver();
-      }else if (NumOfGuessed === wordToGuess.length){
+      if (NumOfGuessess === 0) {
+        GameOver();
+      } else if (NumOfGuessed === wordToGuess.length) {
         console.log("You got it right!");
         PlayAgain();
       } else {
-          PromptCharGuessing();
+        PromptCharGuessing();
       }
-  });
+    });
+}
+
+function PlayGame() {
+    NumOfGuessess = 9;
+    NumOfGuessess = 0;
+    console.log("----------------------------New Game--------------------------------");
+    console.log("------------" + NumOfGuessess + " guesses remaining-----------");
+    generateword();
+    wordToGuessObj = new Word.word(wordToGuess);
+    PromptCharGuessing();
 }
 
 //Randomly selects a word and uses the Word constructor to store it
