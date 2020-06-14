@@ -33,6 +33,7 @@ function prompt() {
   playGame();
 }
 
+//playing the game 
 function playGame() {
   pickedWord = "";
   guesses = 15;
@@ -62,6 +63,7 @@ function getWord() {
   }
 }
 
+//Prompts the user for each guess and keeps track of the user's remaining guesses
 function makeGuess() {
   let checker = [];
   inquirer
@@ -75,7 +77,7 @@ function makeGuess() {
           guesses,
       },
     ])
-    .then((data) => {
+    .then(function(data) {
       word.wordArray.forEach((letter) => {
         letter.letterCheck(data.guessedLetter);
         checker.push(letter.toString());
@@ -96,6 +98,7 @@ function makeGuess() {
     });
 }
 
+//when game is complete this prompts the player to choose whether to play again
 function continuePrompt() {
   inquirer
     .prompt([
@@ -115,8 +118,5 @@ function continuePrompt() {
     });
 }
 
+//play game again
 prompt();
-
-
-
-//Prompts the user for each guess and keeps track of the user's remaining guesses
