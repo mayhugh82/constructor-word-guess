@@ -27,7 +27,7 @@ Win Game
 
 ## Link to Deployed Version
 
-[liri-node-app](https://github.com/mayhugh82/constructor-word-guess)
+[constructor-word-app](https://github.com/mayhugh82/constructor-word-guess)
 
 ## Technologies Used
 * javaScript
